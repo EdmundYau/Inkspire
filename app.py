@@ -80,6 +80,10 @@ import streamlit as st
 from audio_recorder_streamlit import audio_recorder
 import openai
 import base64
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 def setup_openai_client(api_key):
     return openai.OpenAI(api_key=api_key)
@@ -102,7 +106,7 @@ def main():
     st.set_page_config(layout="wide", page_title="Inkspire")
     st.title("Inkspire")
     st.write("Welcome to Inkspire! Let's get started.")
-    
+
 
     # Create two columns for the audio recorder and the text area
     col1, spacer, col2 = st.columns([10, 0.5, 5])  # Adjusted ratios to give more width to col1 and col2
@@ -138,7 +142,8 @@ def main():
 
     with col2:
         # API Key Configuration and Processing
-        api_key = "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"
+        api_key = os.getenv('OPENAI_API_KEY')
+
         if api_key and recorded_audio:
             client = setup_openai_client(api_key)
 
