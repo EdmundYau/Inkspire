@@ -1,9 +1,4 @@
-Necessary Python Packages:
-
 streamlit
 openai
 python-dotenv
 
-To install the necessary packages, run the following command:
-
-pip install streamlit openai python-dotenv
